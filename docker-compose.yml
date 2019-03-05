@@ -1,10 +1,12 @@
 version: "3.7"
 
 services:
-  wp-db:
+  db:
     image: mariadb:10
+    ports:
+      - "3306:3306"
     volumes:
-      - wp-db_data:/var/lib/mysql
+      - db-data:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
@@ -14,15 +16,32 @@ services:
 
   wp-collinmbarrett:
     depends_on:
-      - wp-db
+      - db
     image: wordpress:php7.3-fpm-alpine
     ports:
-      - "8000:80"
+      - "9000:9000"
+    volumes:
+      - static-data:/var/www/html
     restart: always
     environment:
-      WORDPRESS_DB_HOST: wp-db:3306
+      WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    links:
+      - wp-collinmbarrett
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - static-data:/var/www/html
+      - log-data:/var/log
+    restart: always
+
 volumes:
-  wp-db_data: {}
+  db-data:
+  static-data:
+  log-data:
