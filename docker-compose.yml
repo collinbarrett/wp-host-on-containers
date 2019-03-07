@@ -4,7 +4,7 @@ services:
   db:
     image: mariadb:10
     ports:
-      - "3306:3306"
+      - "3306"
     volumes:
       - db-data:/var/lib/mysql
     restart: always
