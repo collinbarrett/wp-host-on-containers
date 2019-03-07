@@ -1,24 +1,23 @@
 version: "3.7"
 
 services:
-  db:
+  mysql:
     image: mariadb:10
     volumes:
-      - db-data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: password1
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
 
   wp-collinmbarrett:
     depends_on:
-      - db
+      - mysql
     image: wordpress:php7.3-fpm-alpine
     volumes:
       - static-data:/var/www/html
     environment:
-      WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
@@ -36,6 +35,6 @@ services:
       - nginx-logs:/var/log
 
 volumes:
-  db-data:
+  mysql-data:
   static-data:
   nginx-logs:
