@@ -5,7 +5,6 @@ services:
     image: mariadb:10
     volumes:
       - db-data:/var/lib/mysql
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
       MYSQL_DATABASE: wordpress
@@ -20,7 +19,6 @@ services:
       - "9000:9000"
     volumes:
       - static-data:/var/www/html
-    restart: always
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
@@ -37,7 +35,6 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - static-data:/var/www/html
       - nginx-logs:/var/log
-    restart: always
 
 volumes:
   db-data:
