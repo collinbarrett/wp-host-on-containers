@@ -15,8 +15,6 @@ services:
     depends_on:
       - db
     image: wordpress:php7.3-fpm-alpine
-    ports:
-      - "9000:9000"
     volumes:
       - static-data:/var/www/html
     environment:
