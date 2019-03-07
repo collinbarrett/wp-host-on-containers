@@ -38,10 +38,10 @@ services:
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - static-data:/var/www/html
-      - log-data:/var/log
+      - nginx-logs:/var/log
     restart: always
 
 volumes:
   db-data:
   static-data:
-  log-data:
+  nginx-logs:
