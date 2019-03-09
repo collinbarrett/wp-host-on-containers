@@ -29,6 +29,7 @@ services:
     links:
       - wp-collinmbarrett
     volumes:
+      - ~/cert:/etc/nginx/cert
       - ./nginx:/etc/nginx/conf.d
       - static-data:/var/www/html
       - nginx-logs:/var/log
