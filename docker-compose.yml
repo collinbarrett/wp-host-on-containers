@@ -16,7 +16,7 @@ services:
     depends_on:
       - mysql
     volumes:
-      - static-data:/var/www/html
+      - wp-collinmbarrett:/var/www/html
     environment:
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
@@ -29,12 +29,12 @@ services:
     links:
       - wp-collinmbarrett
     volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/sites-enabled:/etc/nginx/sites-enabled
+      - ./nginx/svr-includes:/etc/nginx/svr-includes
       - ~/cert:/etc/nginx/cert
-      - ./nginx:/etc/nginx/conf.d
-      - static-data:/var/www/html
-      - nginx-logs:/var/log
+      - wp-collinmbarrett:/var/www/html/wp-collinmbarrett
 
 volumes:
   mysql-data:
-  static-data:
-  nginx-logs:
+  wp-collinmbarrett:
