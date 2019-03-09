@@ -30,7 +30,6 @@ services:
       - wp-collinmbarrett
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./nginx/sites-enabled:/etc/nginx/sites-enabled
       - ./nginx/svr-includes:/etc/nginx/svr-includes
       - ~/cert:/etc/nginx/cert
       - wp-collinmbarrett:/var/www/html/wp-collinmbarrett
