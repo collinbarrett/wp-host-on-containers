@@ -3,6 +3,7 @@ version: "3.7"
 services:
   mysql:
     image: mariadb:10
+    container_name: mysql
     volumes:
       - mysql-data:/var/lib/mysql
     environment:
@@ -13,6 +14,7 @@ services:
 
   wp-collinmbarrett:
     image: wordpress:php7.3-fpm-alpine
+    container_name: wp-collinmbarrett
     depends_on:
       - mysql
     volumes:
@@ -24,6 +26,7 @@ services:
 
   nginx:
     image: nginx:alpine
+    container_name: nginx
     ports:
       - "80:80"
       - "443:443"
