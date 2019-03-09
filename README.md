@@ -60,7 +60,7 @@ I use [Cloudflare's free ssl certificates](https://www.cloudflare.com/ssl/).
 1. SFTP the following to `~/cert`:
     - domain-specific key `.pem` files
     - domain-specific cert `.pem` files
-    - [Cloudflare Authenticated Origin Pull cert]("https://support.cloudflare.com/hc/en-us/article_attachments/201243967/origin-pull-ca.pem")
+    - [Cloudflare Authenticated Origin Pull cert](https://support.cloudflare.com/hc/en-us/article_attachments/201243967/origin-pull-ca.pem)
 2. `sudo openssl dhparam -out ~/cert/dhparam.pem 2048`
 3. `sudo chmod -R 600 ~/cert`
 4. `sudo chown root:root ~/cert`
