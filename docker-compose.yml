@@ -34,7 +34,9 @@ services:
       - ./nginx/svr-includes:/etc/nginx/svr-includes
       - ~/cert:/etc/nginx/cert
       - wp-collinmbarrett:/var/www/html/wp-collinmbarrett
+      - nginx-logs:/var/log/nginx
 
 volumes:
   mysql-data:
   wp-collinmbarrett:
+  nginx-logs:
