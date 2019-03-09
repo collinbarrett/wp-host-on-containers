@@ -22,15 +22,6 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
 
-  wp-cli:
-    image: wordpress:cli-php7.3
-    links:
-      - mysql
-    volumes:
-      - wp-collinmbarrett
-    entrypoint: wp
-    command: "--info"
-
   nginx:
     image: nginx:alpine
     ports:
