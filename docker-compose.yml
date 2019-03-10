@@ -12,7 +12,7 @@ services:
       - ./nginx/svr-includes:/etc/nginx/svr-includes
       - ~/cert:/etc/nginx/cert
       - nginx-logs:/var/log/nginx
-      - wp-collinmbarrett-files:/var/www/wp-collinmbarrett
+      - wp-collinmbarrett-files:/var/www/html
 
   wp-collinmbarrett:
     image: wordpress:php7.3-fpm-alpine
