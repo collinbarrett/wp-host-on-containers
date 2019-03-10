@@ -6,30 +6,51 @@ services:
     ports:
       - "443:443"
     links:
-      - wp-collinmbarrett
+      - wp-collinmbarrett_com
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/svr-includes:/etc/nginx/svr-includes
       - ~/cert:/etc/nginx/cert
-      - nginx-logs:/var/log/nginx
-      - wp-collinmbarrett-files:/var/www/html
+      - wp-collinmbarrett_com-files:/var/www/html
 
-  wp-collinmbarrett:
+  wp-collinmbarrett_com:
     image: wordpress:php7.3-fpm-alpine
     depends_on:
-      - mariadb-wp-collinmbarrett
+      - mariadb-wp-collinmbarrett_com
     volumes:
-      - wp-collinmbarrett-files:/var/www/html
+      - wp-collinmbarrett_com-files:/var/www/html
     environment:
-      WORDPRESS_DB_HOST: mariadb-wp-collinmbarrett:3306
+      WORDPRESS_DB_HOST: mariadb-wp-collinmbarrett_com:3306
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
 
-  mariadb-wp-collinmbarrett:
+  mariadb-wp-collinmbarrett_com:
     image: mariadb:10
     volumes:
-      - wp-collinmbarrett-mariadb-data:/var/lib/mysql
+      - wp-collinmbarrett_com-mariadb-data:/var/lib/mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wp-jennythebaker_com:
+    image: wordpress:php7.3-fpm-alpine
+    depends_on:
+      - mariadb-wp-jennythebaker_com
+    volumes:
+      - wp-jennythebaker_com-files:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: mariadb-wp-jennythebaker_com:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+
+  mariadb-wp-jennythebaker_com:
+    image: mariadb:10
+    volumes:
+      - wp-jennythebaker_com-mariadb-data:/var/lib/mysql
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
       MYSQL_DATABASE: wordpress
@@ -37,6 +58,7 @@ services:
       MYSQL_PASSWORD: wordpress
 
 volumes:
-  nginx-logs:
-  wp-collinmbarrett-files:
-  wp-collinmbarrett-mariadb-data:
+  wp-collinmbarrett_com-files:
+  wp-collinmbarrett_com-mariadb-data:
+  wp-jennythebaker_com-files:
+  wp-jennythebaker_com-mariadb-data:
