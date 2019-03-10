@@ -7,11 +7,13 @@ services:
       - "443:443"
     links:
       - wp-collinmbarrett_com
+      - wp-jennythebaker_com
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/svr-includes:/etc/nginx/svr-includes
       - ~/cert:/etc/nginx/cert
       - wp-collinmbarrett_com-files:/var/www/html
+      - wp-jennythebaker_com-files:/var/www/html
 
   wp-collinmbarrett_com:
     image: wordpress:php7.3-fpm-alpine
