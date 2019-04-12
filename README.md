@@ -24,9 +24,9 @@ A modern, containerized `v2` of [wp-vps-build-guide](https://github.com/collinba
 
 ## Initial Setup
 
-1. Create a minimum-size droplet with the latest Ubuntu LTS.
-    - Enable backups.
-    - Enable IPv6 and Monitoring.
+1. Create a minimum-size Standard Droplet with the latest Ubuntu LTS.
+    - Add backups.
+    - Enable Monitoring.
     - Include a pre-configured SSH key.
 2. Follow the DigitalOcean guide for [Initial Server Setup with Ubuntu](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04).
 3. Set `PermitRootLogin` to `no` in `/etc/ssh/sshd_config`.
