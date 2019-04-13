@@ -68,8 +68,6 @@ services:
 
   wp-cli:
     image: wordpress:cli-php7.3
-    links:
-    volumes:
     entrypoint: wp
     command: "--info"
 
