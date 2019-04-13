@@ -6,61 +6,72 @@ services:
     ports:
       - "443:443"
     links:
-      - wp-collinmbarrett_com
-      - wp-jennythebaker_com
+      - wp_collinmbarrett-com
+      - wp_jennythebaker-com
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./nginx/svr-includes:/etc/nginx/svr-includes
-      - ~/cert:/etc/nginx/cert
-      - wp-collinmbarrett_com-files:/var/www/wp-collinmbarrett_com
-      - wp-jennythebaker_com-files:/var/www/wp-jennythebaker_com
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/svr-includes:/etc/nginx/svr-includes:ro
+      - ~/cert:/etc/nginx/cert:ro
+      - collinmbarrett-com_files:/var/www/wp_collinmbarrett-com:ro
+      - jennythebaker-com_files:/var/www/wp_jennythebaker-com:ro
 
-  wp-collinmbarrett_com:
+  wp_collinmbarrett-com:
     image: wordpress:php7.3-fpm-alpine
     depends_on:
-      - mariadb-wp-collinmbarrett_com
+      - mariadb_collinmbarrett-com
     volumes:
-      - wp-collinmbarrett_com-files:/var/www/html
+      - collinmbarrett-com_files:/var/www/html
     environment:
-      WORDPRESS_DB_HOST: mariadb-wp-collinmbarrett_com:3306
+      WORDPRESS_DB_HOST: mariadb_collinmbarrett-com:3306
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
 
-  mariadb-wp-collinmbarrett_com:
+  mariadb_collinmbarrett-com:
     image: mariadb:10
     volumes:
-      - wp-collinmbarrett_com-mariadb-data:/var/lib/mysql
+      - collinmbarrett-com_data:/var/lib/mysql
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
 
-  wp-jennythebaker_com:
+  wp_jennythebaker-com:
     image: wordpress:php7.3-fpm-alpine
     depends_on:
-      - mariadb-wp-jennythebaker_com
+      - mariadb_jennythebaker-com
     volumes:
-      - wp-jennythebaker_com-files:/var/www/html
+      - jennythebaker-com_files:/var/www/html
     environment:
-      WORDPRESS_DB_HOST: mariadb-wp-jennythebaker_com:3306
+      WORDPRESS_DB_HOST: mariadb_jennythebaker-com:3306
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
 
-  mariadb-wp-jennythebaker_com:
+  mariadb_jennythebaker-com:
     image: mariadb:10
     volumes:
-      - wp-jennythebaker_com-mariadb-data:/var/lib/mysql
+      - jennythebaker-com_data:/var/lib/mysql
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
+
+  wp-cli:
+    image: wordpress:cli-php7.3
+    links:
+      - mariadb_collinmbarrett-com
+      - mariadb_jennythebaker-com
+    volumes:
+      - collinmbarrett-com_files
+      - jennythebaker-com_files
+    entrypoint: wp
+    command: "--info"
 
 volumes:
-  wp-collinmbarrett_com-files:
-  wp-collinmbarrett_com-mariadb-data:
-  wp-jennythebaker_com-files:
-  wp-jennythebaker_com-mariadb-data:
+  collinmbarrett-com_files:
+  collinmbarrett-com_data:
+  jennythebaker-com_files:
+  jennythebaker-com_data:
