@@ -69,11 +69,7 @@ services:
   wp-cli:
     image: wordpress:cli-php7.3
     links:
-      - mariadb_collinmbarrett-com
-      - mariadb_jennythebaker-com
     volumes:
-      - collinmbarrett-com_files
-      - jennythebaker-com_files
     entrypoint: wp
     command: "--info"
 
