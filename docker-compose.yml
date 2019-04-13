@@ -12,7 +12,7 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/svr-includes:/etc/nginx/svr-includes:ro
       - ~/cert:/etc/nginx/cert:ro
-      - collinmbarrett-com_files:/var/www/html:ro
+      - collinmbarrett-com_files:/var/www/html/collinmbarrett-com:ro
       # - collinmbarrett-com_files:/var/www/html/collinmbarrett-com:ro
       # - jennythebaker-com_files:/var/www/html/jennythebaker-com:ro
     command: [nginx-debug, '-g', 'daemon off;']
