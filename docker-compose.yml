@@ -15,6 +15,7 @@ services:
       - ~/cert:/etc/nginx/cert:ro
       - collinmbarrett-com_files:/var/www/html/collinmbarrett-com:ro
       - jennythebaker-com_files:/var/www/html/jennythebaker-com:ro
+    command: [nginx-debug, '-g', 'daemon off;']
 
   wp_collinmbarrett-com:
     image: wordpress:php7.3-fpm-alpine
