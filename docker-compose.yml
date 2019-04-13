@@ -3,14 +3,12 @@ version: "3.7"
 services:
   nginx:
     image: nginx:alpine
-    restart: always
     ports:
       - "443:443"
     links:
       - wp_collinmbarrett-com
       # - wp_jennythebaker-com
     volumes:
-      - nginx_logs:/var/log/nginx
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/svr-includes:/etc/nginx/svr-includes:ro
       - ~/cert:/etc/nginx/cert:ro
@@ -63,13 +61,7 @@ services:
   #     MYSQL_USER: wordpress
   #     MYSQL_PASSWORD: wordpress
 
-  wp-cli:
-    image: wordpress:cli-php7.3
-    entrypoint: wp
-    command: "--info"
-
 volumes:
-  nginx_logs:
   collinmbarrett-com_files:
   collinmbarrett-com_data:
   # jennythebaker-com_files:
