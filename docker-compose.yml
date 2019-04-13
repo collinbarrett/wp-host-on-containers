@@ -9,11 +9,12 @@ services:
       - wp_collinmbarrett-com
       - wp_jennythebaker-com
     volumes:
+      - nginx_logs:/var/log/nginx
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/svr-includes:/etc/nginx/svr-includes:ro
       - ~/cert:/etc/nginx/cert:ro
-      - collinmbarrett-com_files:/var/www/wp_collinmbarrett-com:ro
-      - jennythebaker-com_files:/var/www/wp_jennythebaker-com:ro
+      - collinmbarrett-com_files:/var/www/html/collinmbarrett-com:ro
+      - jennythebaker-com_files:/var/www/html/jennythebaker-com:ro
 
   wp_collinmbarrett-com:
     image: wordpress:php7.3-fpm-alpine
@@ -71,6 +72,7 @@ services:
     command: "--info"
 
 volumes:
+  nginx_logs:
   collinmbarrett-com_files:
   collinmbarrett-com_data:
   jennythebaker-com_files:
