@@ -65,9 +65,12 @@ I use [Cloudflare's free ssl certificates](https://www.cloudflare.com/ssl/).
 
 TBD
 
+- Add a `.env` Secure File and corresponding task for downloading the MariaDB/WordPress secure environment variables.
+
 # TODO List
 
-- [ ] Use secrets for database configurations.
+- [X] Use secrets for database configurations.
+- [ ] Limit permissions of WordPress database user.
 - [ ] Implement backups of databases and files.
 - [ ] Implement auto-updates of WordPress, plugins, and themes via [wp-cli](https://wp-cli.org/).
 - [ ] Implement fastCGI caching.
