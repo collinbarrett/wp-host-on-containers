@@ -8,6 +8,7 @@ services:
     links:
       - wp_collinmbarrett-com
       - wp_jennythebaker-com
+      - wp_sycamorememphis-org
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/svr-includes:/etc/nginx/svr-includes:ro
