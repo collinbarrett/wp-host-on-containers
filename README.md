@@ -10,7 +10,7 @@ A modern, containerized `v2` of [wp-vps-build-guide](https://github.com/collinba
 
 - GitHub
 - Azure Pipelines
-- DigitalOcean
+- [DigitalOcean](https://m.do.co/c/fea63c0a77d1 "DigitalOcean Affiliate Link")
 - Ubuntu LTS
 - Docker CE
 - Docker Compose
@@ -30,8 +30,8 @@ A modern, containerized `v2` of [wp-vps-build-guide](https://github.com/collinba
     - Include a pre-configured SSH key.
 2. Follow the DigitalOcean guide for [Initial Server Setup with Ubuntu](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04).
 3. Set `PermitRootLogin` to `no` in `/etc/ssh/sshd_config`.
-4. `sudo apt-get update; sudo apt-get upgrade; sudo apt-get dist-upgrade; sudo apt-get autoremove; sudo reboot now`
-5. `sudo apt-get install fail2ban`
+4. `sudo apt update; sudo apt upgrade; sudo apt dist-upgrade; sudo apt autoremove; sudo reboot now`
+5. `sudo apt install fail2ban`
 6. Enable [Ubuntu automatic updates](https://help.ubuntu.com/lts/serverguide/automatic-updates.html.en).
 
 ## Register with Azure DevOps
