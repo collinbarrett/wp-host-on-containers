@@ -12,8 +12,8 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/svr-includes:/etc/nginx/svr-includes:ro
       - ~/cert:/etc/nginx/cert:ro
-      - collinmbarrett-com_files:/var/www/html/collinmbarrett-com:ro
-      - jennythebaker-com_files:/var/www/html/jennythebaker-com:ro
+      - collinmbarrett-com_files:/var/www/collinmbarrett-com:ro
+      - jennythebaker-com_files:/var/www/jennythebaker-com:ro
 
   wp_collinmbarrett-com:
     image: wordpress:php7.3-fpm-alpine
