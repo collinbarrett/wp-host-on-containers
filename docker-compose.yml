@@ -20,7 +20,7 @@ services:
   wp_collinmbarrett-com:
     image: wordpress:php7.3-fpm-alpine
     env_file:
-      - ./production.env
+      - ${AGENT_TEMPDIRECTORY}/production.env
     depends_on:
       - mariadb_collinmbarrett-com
     volumes:
@@ -34,7 +34,7 @@ services:
   mariadb_collinmbarrett-com:
     image: mariadb:10
     env_file:
-      - ./production.env
+      - ${AGENT_TEMPDIRECTORY}/production.env
     volumes:
       - collinmbarrett-com_data:/var/lib/mysql
     environment:
@@ -46,7 +46,7 @@ services:
   wp_jennythebaker-com:
     image: wordpress:php7.3-fpm-alpine
     env_file:
-      - ./production.env
+      - ${AGENT_TEMPDIRECTORY}/production.env
     depends_on:
       - mariadb_jennythebaker-com
     volumes:
@@ -60,7 +60,7 @@ services:
   mariadb_jennythebaker-com:
     image: mariadb:10
     env_file:
-      - ./production.env
+      - ${AGENT_TEMPDIRECTORY}/production.env
     volumes:
       - jennythebaker-com_data:/var/lib/mysql
     environment:
@@ -72,7 +72,7 @@ services:
   wp_sycamorememphis-org:
     image: wordpress:php7.3-fpm-alpine
     env_file:
-      - ./production.env
+      - ${AGENT_TEMPDIRECTORY}/production.env
     depends_on:
       - mariadb_sycamorememphis-org
     volumes:
@@ -86,7 +86,7 @@ services:
   mariadb_sycamorememphis-org:
     image: mariadb:10
     env_file:
-      - ./production.env
+      - ${AGENT_TEMPDIRECTORY}/production.env
     volumes:
       - sycamorememphis-org_data:/var/lib/mysql
     environment:
