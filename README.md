@@ -62,3 +62,14 @@ I use [Cloudflare's free ssl certificates](https://www.cloudflare.com/ssl/).
 # Azure Pipelines Setup
 
 TBD
+
+# TODO List
+
+[] Use secrets for database configurations.
+[] Implement backups of databases and files.
+[] Implement auto-updates of WordPress, plugins, and themes via [wp-cli](https://wp-cli.org/).
+[] Implement fastCGI caching.
+[] Implement miscellaneous nginx best practices for speed and security.
+    - [h5bp](https://github.com/h5bp/server-configs-nginx)
+[] Implement [wp-sweep](https://github.com/lesterchan/wp-sweep) via [wp-cli](https://wp-cli.org/).
+[] Tune MariaDB instances for WordPress performance.
