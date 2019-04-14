@@ -13,7 +13,7 @@ services:
       - ./nginx/svr-includes:/etc/nginx/svr-includes:ro
       - ~/cert:/etc/nginx/cert:ro
       - collinmbarrett-com_files:/var/www/html/collinmbarrett-com:ro
-      # - jennythebaker-com_files:/var/www/html/jennythebaker-com:ro
+      - jennythebaker-com_files:/var/www/html/jennythebaker-com:ro
 
   wp_collinmbarrett-com:
     image: wordpress:php7.3-fpm-alpine
@@ -37,30 +37,30 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
 
-  # wp_jennythebaker-com:
-  #   image: wordpress:php7.3-fpm-alpine
-  #   depends_on:
-  #     - mariadb_jennythebaker-com
-  #   volumes:
-  #     - jennythebaker-com_files:/var/www/html
-  #   environment:
-  #     WORDPRESS_DB_HOST: mariadb_jennythebaker-com:3306
-  #     WORDPRESS_DB_NAME: wordpress
-  #     WORDPRESS_DB_USER: wordpress
-  #     WORDPRESS_DB_PASSWORD: wordpress
+  wp_jennythebaker-com:
+    image: wordpress:php7.3-fpm-alpine
+    depends_on:
+      - mariadb_jennythebaker-com
+    volumes:
+      - jennythebaker-com_files:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: mariadb_jennythebaker-com:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
 
-  # mariadb_jennythebaker-com:
-  #   image: mariadb:10
-  #   volumes:
-  #     - jennythebaker-com_data:/var/lib/mysql
-  #   environment:
-  #     MYSQL_RANDOM_ROOT_PASSWORD: "yes"
-  #     MYSQL_DATABASE: wordpress
-  #     MYSQL_USER: wordpress
-  #     MYSQL_PASSWORD: wordpress
+  mariadb_jennythebaker-com:
+    image: mariadb:10
+    volumes:
+      - jennythebaker-com_data:/var/lib/mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
 
 volumes:
   collinmbarrett-com_files:
   collinmbarrett-com_data:
-  # jennythebaker-com_files:
-  # jennythebaker-com_data:
+  jennythebaker-com_files:
+  jennythebaker-com_data:
