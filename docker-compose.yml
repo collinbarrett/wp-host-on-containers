@@ -19,69 +19,81 @@ services:
 
   wp_collinmbarrett-com:
     image: wordpress:php7.3-fpm-alpine
+    env_file:
+      - ./production.env
     depends_on:
       - mariadb_collinmbarrett-com
     volumes:
       - collinmbarrett-com_files:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mariadb_collinmbarrett-com:3306
-      WORDPRESS_DB_NAME: ${WP_COLLINMBARRETT-COM_WORDPRESS_DB_NAME}
-      WORDPRESS_DB_USER: ${WP_COLLINMBARRETT-COM_WORDPRESS_DB_USER}
-      WORDPRESS_DB_PASSWORD: ${WP_COLLINMBARRETT-COM_WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WP_COLLINMBARRETT_WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WP_COLLINMBARRETT_WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WP_COLLINMBARRETT_WORDPRESS_DB_PASSWORD}
 
   mariadb_collinmbarrett-com:
     image: mariadb:10
+    env_file:
+      - ./production.env
     volumes:
       - collinmbarrett-com_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ${WP_COLLINMBARRETT-COM_MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${WP_COLLINMBARRETT-COM_WORDPRESS_DB_NAME}
-      MYSQL_USER: ${WP_COLLINMBARRETT-COM_WORDPRESS_DB_USER}
-      MYSQL_PASSWORD: ${WP_COLLINMBARRETT-COM_WORDPRESS_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${WP_COLLINMBARRETT_MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${WP_COLLINMBARRETT_WORDPRESS_DB_NAME}
+      MYSQL_USER: ${WP_COLLINMBARRETT_WORDPRESS_DB_USER}
+      MYSQL_PASSWORD: ${WP_COLLINMBARRETT_WORDPRESS_DB_PASSWORD}
 
   wp_jennythebaker-com:
     image: wordpress:php7.3-fpm-alpine
+    env_file:
+      - ./production.env
     depends_on:
       - mariadb_jennythebaker-com
     volumes:
       - jennythebaker-com_files:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mariadb_jennythebaker-com:3306
-      WORDPRESS_DB_NAME: ${WP_JENNYTHEBAKER-COM_WORDPRESS_DB_NAME}
-      WORDPRESS_DB_USER: ${WP_JENNYTHEBAKER-COM_WORDPRESS_DB_USER}
-      WORDPRESS_DB_PASSWORD: ${WP_JENNYTHEBAKER-COM_WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WP_JENNYTHEBAKER_WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WP_JENNYTHEBAKER_WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WP_JENNYTHEBAKER_WORDPRESS_DB_PASSWORD}
 
   mariadb_jennythebaker-com:
     image: mariadb:10
+    env_file:
+      - ./production.env
     volumes:
       - jennythebaker-com_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ${WP_JENNYTHEBAKER-COM_MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${WP_JENNYTHEBAKER-COM_WORDPRESS_DB_NAME}
-      MYSQL_USER: ${WP_JENNYTHEBAKER-COM_WORDPRESS_DB_USER}
-      MYSQL_PASSWORD: ${WP_JENNYTHEBAKER-COM_WORDPRESS_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${WP_JENNYTHEBAKER_MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${WP_JENNYTHEBAKER_WORDPRESS_DB_NAME}
+      MYSQL_USER: ${WP_JENNYTHEBAKER_WORDPRESS_DB_USER}
+      MYSQL_PASSWORD: ${WP_JENNYTHEBAKER_WORDPRESS_DB_PASSWORD}
 
   wp_sycamorememphis-org:
     image: wordpress:php7.3-fpm-alpine
+    env_file:
+      - ./production.env
     depends_on:
       - mariadb_sycamorememphis-org
     volumes:
       - sycamorememphis-org_files:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mariadb_sycamorememphis-org:3306
-      WORDPRESS_DB_NAME: ${WP_SYCAMOREMEMPHIS-ORG_WORDPRESS_DB_NAME}
-      WORDPRESS_DB_USER: ${WP_SYCAMOREMEMPHIS-ORG_WORDPRESS_DB_USER}
-      WORDPRESS_DB_PASSWORD: ${WP_SYCAMOREMEMPHIS-ORG_WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_PASSWORD}
 
   mariadb_sycamorememphis-org:
     image: mariadb:10
+    env_file:
+      - ./production.env
     volumes:
       - sycamorememphis-org_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ${WP_SYCAMOREMEMPHIS-ORG_MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${WP_SYCAMOREMEMPHIS-ORG_WORDPRESS_DB_NAME}
-      MYSQL_USER: ${WP_SYCAMOREMEMPHIS-ORG_WORDPRESS_DB_USER}
-      MYSQL_PASSWORD: ${WP_SYCAMOREMEMPHIS-ORG_WORDPRESS_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${WP_SYCAMOREMEMPHIS_MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_NAME}
+      MYSQL_USER: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_USER}
+      MYSQL_PASSWORD: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_PASSWORD}
 
 volumes:
   collinmbarrett-com_files:
