@@ -25,19 +25,22 @@ services:
       - collinmbarrett-com_files:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mariadb_collinmbarrett-com:3306
-      WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: ${WP_COLLINMBARRETT-COM_WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WP_COLLINMBARRETT-COM_WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WP_COLLINMBARRETT-COM_WORDPRESS_DB_PASSWORD}
 
   mariadb_collinmbarrett-com:
     image: mariadb:10
     volumes:
       - collinmbarrett-com_data:/var/lib/mysql
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: ${WP_COLLINMBARRETT-COM_MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${WP_COLLINMBARRETT-COM_WORDPRESS_DB_NAME}
+      MYSQL_USER: ${WP_COLLINMBARRETT-COM_WORDPRESS_DB_USER}
+      MYSQL_PASSWORD: ${WP_COLLINMBARRETT-COM_WORDPRESS_DB_PASSWORD}
+    # command: >
+    #   sh -c "REVOKE ALL ON Users TO '$${WP_COLLINMBARRETT-COM_WORDPRESS_DB_USER}'@'localhost'; &&
+    #          GRANT SELECT,INSERT,UPDATE,DELETE ON '$${WP_COLLINMBARRETT-COM_WORDPRESS_DB_NAME}'.* TO '$${WP_COLLINMBARRETT-COM_WORDPRESS_DB_USER}'@'localhost';"
 
   wp_jennythebaker-com:
     image: wordpress:php7.3-fpm-alpine
@@ -47,19 +50,19 @@ services:
       - jennythebaker-com_files:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mariadb_jennythebaker-com:3306
-      WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: ${WP_JENNYTHEBAKER-COM_WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WP_JENNYTHEBAKER-COM_WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WP_JENNYTHEBAKER-COM_WORDPRESS_DB_PASSWORD}
 
   mariadb_jennythebaker-com:
     image: mariadb:10
     volumes:
       - jennythebaker-com_data:/var/lib/mysql
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: ${WP_JENNYTHEBAKER-COM_MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${WP_JENNYTHEBAKER-COM_WORDPRESS_DB_NAME}
+      MYSQL_USER: ${WP_JENNYTHEBAKER-COM_WORDPRESS_DB_USER}
+      MYSQL_PASSWORD: ${WP_JENNYTHEBAKER-COM_WORDPRESS_DB_PASSWORD}
 
   wp_sycamorememphis-org:
     image: wordpress:php7.3-fpm-alpine
@@ -69,19 +72,19 @@ services:
       - sycamorememphis-org_files:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mariadb_sycamorememphis-org:3306
-      WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: ${WP_SYCAMOREMEMPHIS-ORG_WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WP_SYCAMOREMEMPHIS-ORG_WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WP_SYCAMOREMEMPHIS-ORG_WORDPRESS_DB_PASSWORD}
 
   mariadb_sycamorememphis-org:
     image: mariadb:10
     volumes:
       - sycamorememphis-org_data:/var/lib/mysql
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: ${WP_SYCAMOREMEMPHIS-ORG_MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${WP_SYCAMOREMEMPHIS-ORG_WORDPRESS_DB_NAME}
+      MYSQL_USER: ${WP_SYCAMOREMEMPHIS-ORG_WORDPRESS_DB_USER}
+      MYSQL_PASSWORD: ${WP_SYCAMOREMEMPHIS-ORG_WORDPRESS_DB_PASSWORD}
 
 volumes:
   collinmbarrett-com_files:
