@@ -14,6 +14,7 @@ services:
       - ~/cert:/etc/nginx/cert:ro
       - collinmbarrett-com_files:/var/www/collinmbarrett-com:ro
       - jennythebaker-com_files:/var/www/jennythebaker-com:ro
+      - sycamorememphis-org_files:/var/www/sycamorememphis-org:ro
 
   wp_collinmbarrett-com:
     image: wordpress:php7.3-fpm-alpine
@@ -59,8 +60,32 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
 
+  wp_sycamorememphis-org:
+    image: wordpress:php7.3-fpm-alpine
+    depends_on:
+      - mariadb_sycamorememphis-org
+    volumes:
+      - sycamorememphis-org_files:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: mariadb_sycamorememphis-org:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+
+  mariadb_sycamorememphis-org:
+    image: mariadb:10
+    volumes:
+      - sycamorememphis-org_data:/var/lib/mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
 volumes:
   collinmbarrett-com_files:
   collinmbarrett-com_data:
   jennythebaker-com_files:
   jennythebaker-com_data:
+  sycamorememphis-org_files:
+  sycamorememphis-org_data:

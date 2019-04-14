@@ -6,6 +6,8 @@ Continuously deploying WordPress sites in docker containers to a [$5/mo DigitalO
 
 A modern, containerized `v2` of [wp-vps-build-guide](https://github.com/collinbarrett/wp-vps-build-guide).
 
+Note: This repo is primarily for my personal DevOps process and not meant to be directly re-usable by anyone. However, it could potentially serve as a reference for anyone trying to do something similar.
+
 # The Stack
 
 - GitHub
