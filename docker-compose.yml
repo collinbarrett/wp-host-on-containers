@@ -3,6 +3,7 @@ version: "3.7"
 services:
   nginx:
     image: nginx:alpine
+    restart: always
     ports:
       - "443:443"
     links:
@@ -19,6 +20,7 @@ services:
 
   wp_collinmbarrett-com:
     image: wordpress:php7.3-fpm-alpine
+    restart: always
     depends_on:
       - mariadb_collinmbarrett-com
     volumes:
@@ -31,6 +33,7 @@ services:
 
   mariadb_collinmbarrett-com:
     image: mariadb:10
+    restart: always
     volumes:
       - collinmbarrett-com_data:/var/lib/mysql
     environment:
@@ -41,9 +44,11 @@ services:
 
   wp_jennythebaker-com:
     image: wordpress:php7.3-fpm-alpine
+    restart: always
     depends_on:
       - mariadb_jennythebaker-com
     volumes:
+      # - ./jennythebaker-dump.sql:/docker-entrypoint-initdb.d/jennythebaker-dump.sql
       - jennythebaker-com_files:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mariadb_jennythebaker-com:3306
@@ -53,6 +58,7 @@ services:
 
   mariadb_jennythebaker-com:
     image: mariadb:10
+    restart: always
     volumes:
       - jennythebaker-com_data:/var/lib/mysql
     environment:
@@ -63,9 +69,11 @@ services:
 
   wp_sycamorememphis-org:
     image: wordpress:php7.3-fpm-alpine
+    restart: always
     depends_on:
       - mariadb_sycamorememphis-org
     volumes:
+      # - ./sycamorememphis-dump.sql:/docker-entrypoint-initdb.d/sycamorememphis-dump.sql
       - sycamorememphis-org_files:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mariadb_sycamorememphis-org:3306
@@ -75,6 +83,7 @@ services:
 
   mariadb_sycamorememphis-org:
     image: mariadb:10
+    restart: always
     volumes:
       - sycamorememphis-org_data:/var/lib/mysql
     environment:
