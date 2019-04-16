@@ -22,6 +22,7 @@ services:
     image: wordpress:php7.3-fpm-alpine
     restart: always
     depends_on:
+      - redis_collinmbarrett-com
       - mariadb_collinmbarrett-com
     volumes:
       - collinmbarrett-com_files:/var/www/html
@@ -30,6 +31,13 @@ services:
       WORDPRESS_DB_NAME: ${WP_COLLINMBARRETT_WORDPRESS_DB_NAME}
       WORDPRESS_DB_USER: ${WP_COLLINMBARRETT_WORDPRESS_DB_USER}
       WORDPRESS_DB_PASSWORD: ${WP_COLLINMBARRETT_WORDPRESS_DB_PASSWORD}
+
+  redis_collinmbarrett-com:
+    image: redis:32bit-stretch
+    restart: always
+    volumes:
+      - collinmbarrett-com_cache:/data
+    command: ["redis-server", "--appendonly", "yes"]
 
   mariadb_collinmbarrett-com:
     image: mariadb:10
@@ -48,7 +56,6 @@ services:
     depends_on:
       - mariadb_jennythebaker-com
     volumes:
-      # - ./jennythebaker-dump.sql:/docker-entrypoint-initdb.d/jennythebaker-dump.sql
       - jennythebaker-com_files:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mariadb_jennythebaker-com:3306
@@ -73,7 +80,6 @@ services:
     depends_on:
       - mariadb_sycamorememphis-org
     volumes:
-      # - ./sycamorememphis-dump.sql:/docker-entrypoint-initdb.d/sycamorememphis-dump.sql
       - sycamorememphis-org_files:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mariadb_sycamorememphis-org:3306
@@ -94,6 +100,7 @@ services:
 
 volumes:
   collinmbarrett-com_files:
+  collinmbarrett-com_cache:
   collinmbarrett-com_data:
   jennythebaker-com_files:
   jennythebaker-com_data:
