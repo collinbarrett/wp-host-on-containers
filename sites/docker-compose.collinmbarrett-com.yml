@@ -1,0 +1,48 @@
+version: "3.7"
+
+services:
+  wp_collinmbarrett-com:
+    image: wordpress:php7.3-fpm-alpine
+    restart: always
+    networks:
+      - reverse-proxy
+      - collinmbarrett-com
+    depends_on:
+      - mariadb_collinmbarrett-com
+    volumes:
+      - collinmbarrett-com_files:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: mariadb_collinmbarrett-com:3306
+      WORDPRESS_DB_NAME: ${WP_COLLINMBARRETT_WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WP_COLLINMBARRETT_WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WP_COLLINMBARRETT_WORDPRESS_DB_PASSWORD}
+
+  redis_collinmbarrett-com:
+    image: redis:32bit
+    restart: always
+    networks:
+      - collinmbarrett-com
+    volumes:
+      - collinmbarrett-com_cache:/data
+    command: ["redis-server", "--appendonly", "yes"]
+
+  mariadb_collinmbarrett-com:
+    image: mariadb:10
+    restart: always
+    networks:
+      - collinmbarrett-com
+    volumes:
+      - collinmbarrett-com_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${WP_COLLINMBARRETT_MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${WP_COLLINMBARRETT_WORDPRESS_DB_NAME}
+      MYSQL_USER: ${WP_COLLINMBARRETT_WORDPRESS_DB_USER}
+      MYSQL_PASSWORD: ${WP_COLLINMBARRETT_WORDPRESS_DB_PASSWORD}
+
+networks:
+  collinmbarrett-com:
+
+volumes:
+  collinmbarrett-com_files:
+  collinmbarrett-com_cache:
+  collinmbarrett-com_data:

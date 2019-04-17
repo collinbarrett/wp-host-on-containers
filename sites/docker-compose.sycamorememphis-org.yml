@@ -1,0 +1,48 @@
+version: "3.7"
+
+services:
+  wp_sycamorememphis-org:
+    image: wordpress:php7.3-fpm-alpine
+    restart: always
+    networks:
+      - reverse-proxy
+      - sycamorememphis-org
+    depends_on:
+      - mariadb_sycamorememphis-org
+    volumes:
+      - sycamorememphis-org_files:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: mariadb_sycamorememphis-org:3306
+      WORDPRESS_DB_NAME: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_PASSWORD}
+
+  redis_sycamorememphis-org:
+    image: redis:32bit
+    restart: always
+    networks:
+      - sycamorememphis-org
+    volumes:
+      - sycamorememphis-org_cache:/data
+    command: ["redis-server", "--appendonly", "yes"]
+
+  mariadb_sycamorememphis-org:
+    image: mariadb:10
+    restart: always
+    networks:
+      - sycamorememphis-org
+    volumes:
+      - sycamorememphis-org_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${WP_SYCAMOREMEMPHIS_MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_NAME}
+      MYSQL_USER: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_USER}
+      MYSQL_PASSWORD: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_PASSWORD}
+
+networks:
+  sycamorememphis-org:
+
+volumes:
+  sycamorememphis-org_files:
+  sycamorememphis-org_cache:
+  sycamorememphis-org_data:
