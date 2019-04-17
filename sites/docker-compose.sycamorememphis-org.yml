@@ -39,6 +39,13 @@ services:
       MYSQL_USER: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_USER}
       MYSQL_PASSWORD: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_PASSWORD}
 
+  wp-cli_sycamorememphis-org:
+    image: wordpress:cli-php7.3
+    networks:
+      - sycamorememphis-org
+    volumes:
+      - sycamorememphis-org_files:/var/www/html
+
 networks:
   sycamorememphis-org:
 
