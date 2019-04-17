@@ -3,7 +3,6 @@ version: "3.7"
 services:
   nginx:
     image: nginx:alpine
-    restart: always
     ports:
       - "443:443"
     links:
@@ -20,7 +19,6 @@ services:
 
   wp_collinmbarrett-com:
     image: wordpress:php7.3-fpm-alpine
-    restart: always
     depends_on:
       - redis_collinmbarrett-com
       - mariadb_collinmbarrett-com
@@ -34,14 +32,12 @@ services:
 
   redis_collinmbarrett-com:
     image: redis:32bit-stretch
-    restart: always
     volumes:
       - collinmbarrett-com_cache:/data
     command: ["redis-server", "--appendonly", "yes"]
 
   mariadb_collinmbarrett-com:
     image: mariadb:10
-    restart: always
     volumes:
       - collinmbarrett-com_data:/var/lib/mysql
     environment:
@@ -52,7 +48,6 @@ services:
 
   wp_jennythebaker-com:
     image: wordpress:php7.3-fpm-alpine
-    restart: always
     depends_on:
       - mariadb_jennythebaker-com
     volumes:
@@ -65,7 +60,6 @@ services:
 
   mariadb_jennythebaker-com:
     image: mariadb:10
-    restart: always
     volumes:
       - jennythebaker-com_data:/var/lib/mysql
     environment:
@@ -76,7 +70,6 @@ services:
 
   wp_sycamorememphis-org:
     image: wordpress:php7.3-fpm-alpine
-    restart: always
     depends_on:
       - mariadb_sycamorememphis-org
     volumes:
@@ -89,7 +82,6 @@ services:
 
   mariadb_sycamorememphis-org:
     image: mariadb:10
-    restart: always
     volumes:
       - sycamorememphis-org_data:/var/lib/mysql
     environment:
