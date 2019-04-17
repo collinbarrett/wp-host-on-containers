@@ -18,7 +18,7 @@ services:
       WORDPRESS_DB_PASSWORD: ${WP_COLLINMBARRETT_WORDPRESS_DB_PASSWORD}
 
   redis_collinmbarrett-com:
-    image: redis:32bit
+    image: redis:32bit-stretch
     restart: always
     networks:
       - collinmbarrett-com
@@ -45,6 +45,8 @@ services:
       - collinmbarrett-com
     volumes:
       - collinmbarrett-com_files:/var/www/html
+    entrypoint: wp  
+    command: "--info"
 
 networks:
   collinmbarrett-com:

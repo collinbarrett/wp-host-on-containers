@@ -18,7 +18,7 @@ services:
       WORDPRESS_DB_PASSWORD: ${WP_SYCAMOREMEMPHIS_WORDPRESS_DB_PASSWORD}
 
   redis_sycamorememphis-org:
-    image: redis:32bit
+    image: redis:32bit-stretch
     restart: always
     networks:
       - sycamorememphis-org
@@ -45,6 +45,8 @@ services:
       - sycamorememphis-org
     volumes:
       - sycamorememphis-org_files:/var/www/html
+    entrypoint: wp  
+    command: "--info"
 
 networks:
   sycamorememphis-org:
