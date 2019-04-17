@@ -32,9 +32,8 @@ Note: This repo is primarily for my personal DevOps process and not meant to be 
     - Include a pre-configured SSH key.
 2. Follow the DigitalOcean guide for [Initial Server Setup with Ubuntu](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04).
 3. Set `PermitRootLogin` to `no` in `/etc/ssh/sshd_config`.
-4. `sudo apt update; sudo apt upgrade; sudo apt dist-upgrade; sudo apt autoremove; sudo reboot now`
-5. `sudo apt install fail2ban`
-6. Enable [Ubuntu automatic updates](https://help.ubuntu.com/lts/serverguide/automatic-updates.html.en).
+4. `sudo apt install fail2ban`
+5. Enable [Ubuntu automatic updates](https://help.ubuntu.com/lts/serverguide/automatic-updates.html.en).
 
 ## Register with Azure DevOps
 
