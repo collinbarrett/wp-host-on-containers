@@ -45,8 +45,6 @@ services:
       - jennythebaker-com
     volumes:
       - jennythebaker-com_files:/var/www/html
-    entrypoint: wp  
-    command: "--info"
 
 networks:
   jennythebaker-com:

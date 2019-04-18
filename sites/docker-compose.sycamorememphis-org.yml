@@ -45,8 +45,6 @@ services:
       - sycamorememphis-org
     volumes:
       - sycamorememphis-org_files:/var/www/html
-    entrypoint: wp  
-    command: "--info"
 
 networks:
   sycamorememphis-org:
