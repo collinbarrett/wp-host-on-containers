@@ -45,6 +45,8 @@ services:
       - collinmbarrett-com
     volumes:
       - collinmbarrett-com_files:/var/www/html
+    labels:
+      do-not-prune:
 
 networks:
   collinmbarrett-com:

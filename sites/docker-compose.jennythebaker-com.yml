@@ -45,6 +45,8 @@ services:
       - jennythebaker-com
     volumes:
       - jennythebaker-com_files:/var/www/html
+    labels:
+      do-not-prune:
 
 networks:
   jennythebaker-com:

@@ -45,6 +45,8 @@ services:
       - sycamorememphis-org
     volumes:
       - sycamorememphis-org_files:/var/www/html
+    labels:
+      do-not-prune:
 
 networks:
   sycamorememphis-org:
