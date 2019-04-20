@@ -25,7 +25,7 @@ services:
     volumes:
       - ../redis.conf:/usr/local/etc/redis/redis.conf:ro
       - collinmbarrett-com_cache:/data
-    command: ["redis-server", "--appendonly", "yes"]
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--appendonly", "yes"]
 
   mariadb_collinmbarrett-com:
     image: mariadb:10
