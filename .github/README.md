@@ -68,12 +68,12 @@ TBD
 
 # Restrict MariaDB User Permissions
 
-Since the default user initialized by the MariaDB docker container is granted all privileges on the default database, we want to restrict that to just the permissions required by normal WordPress operations.
+Since the default user initialized by the MariaDB docker container is granted all privileges on the default database, we want to restrict that to just the permissions required by normal WordPress operations. Replace angle brackets with your actual values.
 
 - `docker exec -i -t <MariaDB_container_name> /bin/bash`
 - `mysql -u root -p`
-- `REVOKE ALL PRIVILEGES ON ``<_WORDPRESS_DB_NAME>``.* FROM '<_WORDPRESS_DB_USER>'@'%';`
-- `GRANT SELECT, INSERT, UPDATE, DELETE ON ``<_WORDPRESS_DB_NAME>``.* TO '<_WORDPRESS_DB_USER>'@'%';`
+- `REVOKE ALL PRIVILEGES ON <_WORDPRESS_DB_NAME>.* FROM '<_WORDPRESS_DB_USER>'@'%';`
+- `GRANT SELECT, INSERT, UPDATE, DELETE ON <_WORDPRESS_DB_NAME>.* TO '<_WORDPRESS_DB_USER>'@'%';`
 
 # TODO List
 
