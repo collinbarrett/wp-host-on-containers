@@ -23,6 +23,7 @@ services:
     networks:
       - collinmbarrett-com
     volumes:
+      - ../redis.conf:/usr/local/etc/redis/redis.conf:ro
       - collinmbarrett-com_cache:/data
     command: ["redis-server", "--appendonly", "yes"]
 

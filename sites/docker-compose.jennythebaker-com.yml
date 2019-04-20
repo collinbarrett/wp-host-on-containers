@@ -23,6 +23,7 @@ services:
     networks:
       - jennythebaker-com
     volumes:
+      - ../redis.conf:/usr/local/etc/redis/redis.conf:ro
       - jennythebaker-com_cache:/data
     command: ["redis-server", "--appendonly", "yes"]
 
