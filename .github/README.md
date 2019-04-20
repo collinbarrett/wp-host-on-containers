@@ -66,7 +66,9 @@ TBD
 
 - Add a `.env` Secure File and corresponding task for downloading the MariaDB/WordPress secure environment variables.
 
-# Restrict MariaDB User Permissions
+# Additional Configuration After First Release
+
+## Restrict MariaDB User Permissions
 
 Since the default user initialized by the MariaDB docker container is granted all privileges on the default database, we want to restrict that to just the permissions required by normal WordPress operations. Replace angle brackets with your actual values.
 
@@ -75,14 +77,31 @@ Since the default user initialized by the MariaDB docker container is granted al
 - `REVOKE ALL PRIVILEGES ON <_WORDPRESS_DB_NAME>.* FROM '<_WORDPRESS_DB_USER>'@'%';`
 - `GRANT SELECT, INSERT, UPDATE, DELETE ON <_WORDPRESS_DB_NAME>.* TO '<_WORDPRESS_DB_USER>'@'%';`
 
+## WordPress Auto-Updates
+
+For now, enable auto-updates using [WordPress's built-in functionality](https://codex.wordpress.org/Configuring_Automatic_Background_Updates). I plan to extend the flexibility of this in the future by using wp-cli triggered from cron jobs to perform udpates and maintenance.
+
+- `docker exec -i -t <WordPress_container_name> /bin/bash`
+- `apk add nano` (Or other text editor of choice. Since I have `--force-recreate` on releases, this will get removed during the next release to keep the container slim.)
+
+### WordPress Core
+
+- Add `define( 'WP_AUTO_UPDATE_CORE', true );` to `wp-config.php`
+
+### Plugins
+
+- Add `add_filter( 'auto_update_plugin', '__return_true' );` to theme's `functions.php`
+
 # TODO List
 
 - [X] Use secrets for database configurations.
 - [X] Limit permissions of WordPress database user.
 - [ ] Implement backups of databases and files.
-- [ ] Implement auto-updates of WordPress, plugins, and themes via [wp-cli](https://wp-cli.org/).
-- [ ] Implement fastCGI page caching.
-- [X] Implement redis object caching.
+- [ ] Implement auto-updates of WordPress core and plugins.
+  - [X] Phase 1: using WordPress's auto-updater
+  - [ ] Phase 2: scheduled using wp-cli
+- [ ] Implement scheduled [wp-sweep](https://github.com/lesterchan/wp-sweep) via [wp-cli](https://wp-cli.org/).
 - [X] Implement miscellaneous nginx best practices for speed and security.
-- [ ] Implement [wp-sweep](https://github.com/lesterchan/wp-sweep) via [wp-cli](https://wp-cli.org/).
+- [X] Implement redis object caching.
+- [ ] Implement fastCGI page caching.
 - [ ] Tune MariaDB instances for WordPress performance.
