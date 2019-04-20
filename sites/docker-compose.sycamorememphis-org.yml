@@ -23,9 +23,8 @@ services:
     networks:
       - sycamorememphis-org
     volumes:
-      - ../redis.conf:/usr/local/etc/redis/redis.conf:ro
       - sycamorememphis-org_cache:/data
-    command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--appendonly", "yes"]
+    command: ["redis-server", "--appendonly", "yes"]
 
   mariadb_sycamorememphis-org:
     image: mariadb:10
