@@ -49,6 +49,8 @@ services:
       do-not-prune:
 
 networks:
+  wp-host_reverse-proxy:
+    external: true
   sycamorememphis-org:
 
 volumes:
