@@ -18,6 +18,7 @@ services:
 
 networks:
   reverse-proxy:
+    name: wp-host_reverse-proxy
 
 volumes:
   collinmbarrett-com_files:

@@ -49,12 +49,12 @@ services:
       do-not-prune:
 
 networks:
-  wp-host_reverse-proxy:
-    external: true
+  reverse-proxy:
+    external:
+      name: wp-host_reverse-proxy
   jennythebaker-com:
 
 volumes:
   jennythebaker-com_files:
   jennythebaker-com_cache:
   jennythebaker-com_data:
-  

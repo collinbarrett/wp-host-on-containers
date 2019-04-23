@@ -49,12 +49,12 @@ services:
       do-not-prune:
 
 networks:
-  wp-host_reverse-proxy:
-    external: true
+  reverse-proxy:
+    external:
+      name: wp-host_reverse-proxy
   sycamorememphis-org:
 
 volumes:
   sycamorememphis-org_files:
   sycamorememphis-org_cache:
   sycamorememphis-org_data:
-  
