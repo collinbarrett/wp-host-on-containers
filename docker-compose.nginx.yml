@@ -18,3 +18,14 @@ services:
 
 networks:
   reverse-proxy:
+
+volumes:
+  collinmbarrett-com_files:
+    external:
+      name: wp-host_collinmbarrett-com_files
+  jennythebaker-com_files:
+    external:
+      name: wp-host_jennythebaker-com_files
+  sycamorememphis-org_files:
+    external:
+      name: wp-host_sycamorememphis-org_files
