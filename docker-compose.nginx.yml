@@ -30,4 +30,3 @@ volumes:
   sycamorememphis-org_files:
     external:
       name: wp-host_sycamorememphis-org_files
-  delete-me:

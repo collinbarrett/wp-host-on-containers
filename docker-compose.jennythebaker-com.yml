@@ -11,11 +11,6 @@ services:
       - mariadb_jennythebaker-com
     volumes:
       - jennythebaker-com_files:/var/www/html
-    environment:
-      WORDPRESS_DB_HOST: mariadb_jennythebaker-com:3306
-      WORDPRESS_DB_NAME: ${WP_JENNYTHEBAKER_WORDPRESS_DB_NAME}
-      WORDPRESS_DB_USER: ${WP_JENNYTHEBAKER_WORDPRESS_DB_USER}
-      WORDPRESS_DB_PASSWORD: ${WP_JENNYTHEBAKER_WORDPRESS_DB_PASSWORD}
 
   redis_jennythebaker-com:
     image: redis:32bit-stretch
@@ -33,11 +28,6 @@ services:
       - jennythebaker-com
     volumes:
       - jennythebaker-com_data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: ${WP_JENNYTHEBAKER_MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${WP_JENNYTHEBAKER_WORDPRESS_DB_NAME}
-      MYSQL_USER: ${WP_JENNYTHEBAKER_WORDPRESS_DB_USER}
-      MYSQL_PASSWORD: ${WP_JENNYTHEBAKER_WORDPRESS_DB_PASSWORD}
 
   wp-cli_jennythebaker-com:
     image: wordpress:cli-php7.3
