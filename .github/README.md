@@ -69,13 +69,11 @@ I use [Cloudflare's free ssl certificates](https://www.cloudflare.com/ssl/).
 
 TBD
 
-- Add a `.env` Secure File and corresponding task for downloading the MariaDB/WordPress secure environment variables.
-
 # Additional Configuration After First Release
 
 ## Restrict MariaDB User Permissions
 
-Since the default user initialized by the MariaDB docker container is granted all privileges on the default database, we want to restrict that to just the permissions required by normal WordPress operations. Replace angle brackets with your actual values.
+Since the default user initialized by the MariaDB docker container is granted all privileges on the default database, we want to restrict that to just the permissions required by normal WordPress operations. Replace angle brackets with our actual values.
 
 - `docker exec -i -t <MariaDB_container_name> /bin/bash`
 - `mysql -u root -p`
@@ -101,7 +99,9 @@ For now, enable auto-updates using [WordPress's built-in functionality](https://
 
 - [X] Use secrets for database configurations.
 - [X] Limit permissions of WordPress database user.
-- [ ] Implement backups of databases and files.
+- [ ] Implement scheduled backups of databases and files.
+  - [X] Phase 1: using DigitalOcean's droplet backups
+  - [ ] Phase 2: docker-compose named volume backups
 - [ ] Implement auto-updates of WordPress core and plugins.
   - [X] Phase 1: using WordPress's auto-updater
   - [ ] Phase 2: scheduled using wp-cli
