@@ -15,7 +15,11 @@ services:
       - collinmbarrett-com_files:/var/www/collinmbarrett-com:ro
       - jennythebaker-com_files:/var/www/jennythebaker-com:ro
       - sycamorememphis-org_files:/var/www/sycamorememphis-org:ro
-      - filterlists-com_files:/var/www/filterlists-com:ro
+#      - filterlists-com_files:/var/www/filterlists-com:ro
+    depends_on:
+      - wp_collinmbarrett-com
+      - wp_jennythebaker-com
+      - wp_sycamorememphis-org
 
 networks:
   reverse-proxy:
@@ -31,6 +35,6 @@ volumes:
   sycamorememphis-org_files:
     external:
       name: wp-host_sycamorememphis-org_files
-  filterlists-com_files:
-    external:
-      name: filterlists_web-static
+#  filterlists-com_files:
+#    external:
+#      name: filterlists_web-static
