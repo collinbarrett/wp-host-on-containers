@@ -37,8 +37,8 @@ services:
     networks:
       - sycamorememphis-org
     depends_on:
-      - wp_sycamorememphis-com
-      - mariadb_sycamorememphis-com
+      - wp_sycamorememphis-org
+      - mariadb_sycamorememphis-org
     volumes:
       - sycamorememphis-org_files:/var/www/html
     labels:
