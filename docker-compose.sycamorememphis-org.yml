@@ -19,7 +19,7 @@ services:
     networks:
       - sycamorememphis-org
     depends_on:
-      - mariadb_sycamorememphis-com
+      - mariadb_sycamorememphis-org
     volumes:
       - sycamorememphis-org_cache:/data
     command: ["redis-server", "--appendonly", "yes"]
