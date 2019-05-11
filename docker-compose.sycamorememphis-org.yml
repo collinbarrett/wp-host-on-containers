@@ -9,6 +9,7 @@ services:
       - sycamorememphis-org
     depends_on:
       - mariadb_sycamorememphis-org
+      - redis_sycamorememphis-org
     volumes:
       - sycamorememphis-org_files:/var/www/html
 
@@ -17,6 +18,8 @@ services:
     restart: always
     networks:
       - sycamorememphis-org
+    depends_on:
+      - mariadb_sycamorememphis-com
     volumes:
       - sycamorememphis-org_cache:/data
     command: ["redis-server", "--appendonly", "yes"]
@@ -33,6 +36,9 @@ services:
     image: wordpress:cli-php7.3
     networks:
       - sycamorememphis-org
+    depends_on:
+      - wp_sycamorememphis-com
+      - mariadb_sycamorememphis-com
     volumes:
       - sycamorememphis-org_files:/var/www/html
     labels:

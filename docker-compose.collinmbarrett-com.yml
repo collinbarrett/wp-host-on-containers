@@ -9,6 +9,7 @@ services:
       - collinmbarrett-com
     depends_on:
       - mariadb_collinmbarrett-com
+      - redis_collinmbarrett-com
     volumes:
       - collinmbarrett-com_files:/var/www/html
 
@@ -17,6 +18,8 @@ services:
     restart: always
     networks:
       - collinmbarrett-com
+    depends_on:
+      - mariadb_collinmbarrett-com
     volumes:
       - collinmbarrett-com_cache:/data
     command: ["redis-server", "--appendonly", "yes"]
@@ -33,6 +36,9 @@ services:
     image: wordpress:cli-php7.3
     networks:
       - collinmbarrett-com
+    depends_on:
+      - wp_collinmbarrett-com
+      - mariadb_collinmbarrett-com
     volumes:
       - collinmbarrett-com_files:/var/www/html
     labels:
