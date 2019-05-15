@@ -42,7 +42,9 @@ Note: This repo is primarily for my personal DevOps process and not meant to be 
 
 ## Register with Azure DevOps
 
-TBD
+1. Visit `https://dev.azure.com/<ORGANIZATIONNAME>/_settings/deploymentpools`.
+2. Add a new deployment pool.
+3. Execute the provided installation script for linux.
 
 ## Install Docker
 
