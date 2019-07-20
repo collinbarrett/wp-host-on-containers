@@ -41,7 +41,7 @@ services:
       - mariadb_collinmbarrett-com
     volumes:
       - collinmbarrett-com_files:/var/www/html
-    command: "plugin update --all"
+    command: "core update && wp plugin update --all"
 
 networks:
   reverse-proxy:
