@@ -36,9 +36,6 @@ services:
     image: wordpress:cli-php7.3
     networks:
       - jennythebaker-com
-    depends_on:
-      - wp_jennythebaker-com
-      - mariadb_jennythebaker-com
     volumes:
       - jennythebaker-com_files:/var/www/html
 
