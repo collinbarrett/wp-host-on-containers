@@ -38,7 +38,6 @@ services:
       - collinmbarrett-com
     volumes:
       - collinmbarrett-com_files:/var/www/html
-      - collinmbarrett-com_data:/var/lib/mysql
 
 networks:
   reverse-proxy:
