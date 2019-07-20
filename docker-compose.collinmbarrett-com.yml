@@ -41,7 +41,7 @@ services:
       - mariadb_collinmbarrett-com
     volumes:
       - collinmbarrett-com_files:/var/www/html
-    command: "--info"
+    command: "plugin update --all"
 
 networks:
   reverse-proxy:
