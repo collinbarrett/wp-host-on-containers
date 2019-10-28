@@ -25,7 +25,7 @@ services:
     command: ["redis-server", "--appendonly", "yes"]
 
   mariadb_collinmbarrett-com:
-    image: mariadb:10
+    image: mariadb:latest
     restart: always
     networks:
       - collinmbarrett-com

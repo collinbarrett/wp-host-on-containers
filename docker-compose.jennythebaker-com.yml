@@ -25,7 +25,7 @@ services:
     command: ["redis-server", "--appendonly", "yes"]
 
   mariadb_jennythebaker-com:
-    image: mariadb:10
+    image: mariadb:latest
     restart: always
     networks:
       - jennythebaker-com

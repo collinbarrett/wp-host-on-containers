@@ -25,7 +25,7 @@ services:
     command: ["redis-server", "--appendonly", "yes"]
 
   mariadb_sycamorememphis-org:
-    image: mariadb:10
+    image: mariadb:latest
     restart: always
     networks:
       - sycamorememphis-org
