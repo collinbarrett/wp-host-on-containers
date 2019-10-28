@@ -14,7 +14,7 @@ services:
       - jennythebaker-com_files:/var/www/html
 
   redis_jennythebaker-com:
-    image: redis:32bit-stretch
+    image: redis:32bit
     restart: always
     networks:
       - jennythebaker-com

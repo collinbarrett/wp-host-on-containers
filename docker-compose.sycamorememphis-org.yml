@@ -14,7 +14,7 @@ services:
       - sycamorememphis-org_files:/var/www/html
 
   redis_sycamorememphis-org:
-    image: redis:32bit-stretch
+    image: redis:32bit
     restart: always
     networks:
       - sycamorememphis-org
