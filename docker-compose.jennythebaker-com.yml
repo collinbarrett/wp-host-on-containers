@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   wp_jennythebaker-com:
-    image: wordpress:php7.3-fpm-alpine
+    image: wordpress:fpm-alpine
     restart: always
     networks:
       - reverse-proxy
