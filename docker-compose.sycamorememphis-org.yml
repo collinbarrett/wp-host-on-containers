@@ -33,7 +33,7 @@ services:
       - sycamorememphis-org_data:/var/lib/mysql
 
   wp-cli_sycamorememphis-org:
-    image: wordpress:cli-php7.3
+    image: wordpress:cli
     networks:
       - sycamorememphis-org
     volumes:

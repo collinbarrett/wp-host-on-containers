@@ -33,7 +33,7 @@ services:
       - collinmbarrett-com_data:/var/lib/mysql
 
   wp-cli_collinmbarrett-com:
-    image: wordpress:cli-php7.3
+    image: wordpress:cli
     networks:
       - collinmbarrett-com
     volumes:
