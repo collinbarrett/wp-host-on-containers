@@ -1,12 +1,10 @@
-# test trigger
-
 trigger:
   batch: false
   branches:
     include: ["master"]
   paths:
     include:
-      ["azure-pipelines.nginx.yaml", "nginx/**", "docker-compose.nginx.yml"]
+      ["azure-pipelines.nginx.yaml", "nginx/*", "docker-compose.nginx.yml"]
 
 pr: none
 
