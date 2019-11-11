@@ -22,6 +22,7 @@ Note: This repo is primarily for my personal DevOps process and not meant to be 
 - Docker CE
 - Docker Compose
 - MariaDB
+- Redis
 - php-fpm
 - WordPress
 - nginx
