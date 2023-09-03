@@ -1,7 +1,7 @@
 trigger:
   batch: false
   branches:
-    include: ["master"]
+    include: ["main"]
   paths:
     include:
       ["azure-pipelines.nginx.yaml", "nginx/*", "docker-compose.nginx.yml"]
