@@ -12,25 +12,15 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/svr-includes:/etc/nginx/svr-includes:ro
       - ~/cert:/etc/nginx/cert:ro
-      - collinmbarrett-com_files:/var/www/collinmbarrett-com:ro
       - jennythebaker-com_files:/var/www/jennythebaker-com:ro
-      - sycamorememphis-org_files:/var/www/sycamorememphis-org:ro
     depends_on:
-      - wp_collinmbarrett-com
       - wp_jennythebaker-com
-      - wp_sycamorememphis-org
 
 networks:
   reverse-proxy:
     name: wp-host_reverse-proxy
 
 volumes:
-  collinmbarrett-com_files:
-    external:
-      name: wp-host_collinmbarrett-com_files
   jennythebaker-com_files:
     external:
       name: wp-host_jennythebaker-com_files
-  sycamorememphis-org_files:
-    external:
-      name: wp-host_sycamorememphis-org_files
