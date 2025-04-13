@@ -9,7 +9,7 @@ services:
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/svr-includes:/etc/nginx/svr-includes:ro
-      - ./cert:/etc/nginx/cert:ro
+      - ~/cert:/etc/nginx/cert:ro
       - jennythebaker-com_files:/var/www/jennythebaker-com:ro
     depends_on:
       - wp_jennythebaker-com
