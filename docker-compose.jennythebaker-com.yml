@@ -1,5 +1,3 @@
-version: "3.7"
-
 services:
   wp_jennythebaker-com:
     image: wordpress:fpm-alpine
@@ -41,8 +39,8 @@ services:
 
 networks:
   reverse-proxy:
-    external:
-      name: wp-host_reverse-proxy
+    name: wp-host_reverse-proxy
+    external: true
   jennythebaker-com:
 
 volumes:

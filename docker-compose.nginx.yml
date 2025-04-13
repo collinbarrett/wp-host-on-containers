@@ -1,5 +1,3 @@
-version: "3.7"
-
 services:
   nginx:
     image: nginx:alpine
@@ -11,7 +9,7 @@ services:
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/svr-includes:/etc/nginx/svr-includes:ro
-      - ~/cert:/etc/nginx/cert:ro
+      - ./cert:/etc/nginx/cert:ro
       - jennythebaker-com_files:/var/www/jennythebaker-com:ro
     depends_on:
       - wp_jennythebaker-com
@@ -19,8 +17,9 @@ services:
 networks:
   reverse-proxy:
     name: wp-host_reverse-proxy
+    external: true
 
 volumes:
   jennythebaker-com_files:
-    external:
-      name: wp-host_jennythebaker-com_files
+    name: wp-host_jennythebaker-com_files
+    external: true
